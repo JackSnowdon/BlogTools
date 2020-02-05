@@ -6,4 +6,6 @@ urlpatterns = [
     path('checklist/', checklist, name="checklist"),
     path('add_checklist/', add_checklist, name="add_checklist"),
     path(r'edit_checklist/<int:pk>', edit_checklist, name="edit_checklist"),
+    path(r'delete_task/<int:pk>', delete_task, name="delete_task"),
+    path(r'complete_task/<int:pk>', complete_task, name="complete_task"),
 ]

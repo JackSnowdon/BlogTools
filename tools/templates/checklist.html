@@ -11,10 +11,17 @@
 </div>
 
 <div class="row">
-    <div class="col-12">
-        {% for t in tasks %}
-        <p><a href="{% url 'edit_checklist' t.id  %}" aria-disabled="false">{{ t.task }}</p></a> {% endfor %}
+    {% for t in tasks %}
+    <div class="col-6">{% if t.completed == False %}
+        <p><a href="{% url 'edit_checklist' t.id  %}" aria-disabled="false">{{ t.task }}</a></p>
+        {% else %}
+        <p><s><a href="{% url 'edit_checklist' t.id  %}" aria-disabled="false">{{ t.task }}</a></s></p>
+        {% endif %}
     </div>
+    <div class="col-6">
+        <a href="{% url 'delete_task' t.id  %}" role="button" class="btn btn-danger" aria-disabled="false">Delete Task</a>
+        <a href="{% url 'complete_task' t.id %}" role="button" class="btn btn-warning" aria-disabled="false">Complete</a>
+    </div>{% endfor %}
 </div>
 
 

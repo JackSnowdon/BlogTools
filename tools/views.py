@@ -71,3 +71,38 @@ def edit_checklist(request, pk):
             request, "You Don't Have The Required Permissions", extra_tags="alert"
         )
         return redirect("blog_home")
+
+
+
+@login_required
+def delete_task(request, pk):
+    if request.user.profile.staff_access:
+        instance = Todo.objects.get(pk=pk)
+        messages.error(
+                    request, "Deleted {0}".format(instance.task), extra_tags="alert"
+                )
+        instance.delete()
+        return redirect(reverse("checklist"))
+    else:
+        messages.error(
+            request, "You Don't Have The Required Permissions", extra_tags="alert"
+        )
+        return redirect("blog_home")
+
+
+
+@login_required
+def complete_task(request, pk):
+    if request.user.profile.staff_access:
+        instance = Todo.objects.get(pk=pk)
+        instance.completed = True
+        messages.error(
+                    request, "Completed {0}".format(instance.task), extra_tags="alert"
+                )
+        instance.save()
+        return redirect(reverse("checklist"))
+    else:
+        messages.error(
+            request, "You Don't Have The Required Permissions", extra_tags="alert"
+        )
+        return redirect("blog_home")
