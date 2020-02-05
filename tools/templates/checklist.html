@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% load static %} {% block page_title %} | Checklist {% endblock %} {% block content %}
+
+<div class="row">
+    <div class="col-12 text-center">
+        <div class="jumbotron">
+            <h1>Checklist</h1>
+            {% if user.profile.staff_access %}
+            <a href="{% url 'add_checklist' %}" role="button" class="btn btn-success" id="add_checklist" aria-disabled="false">Add Item</a> {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        {% for t in tasks %}
+        <p><a href="{% url 'edit_checklist' t.id  %}" aria-disabled="false">{{ t.task }}</p></a> {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}

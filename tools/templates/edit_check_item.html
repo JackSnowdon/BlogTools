@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load static %} {% block page_title %} Edit Checklist Item {% endblock %} {% block content %}
+
+<div class="row">
+    <div class="col-12 text-center">
+        <h2>New Item</h2>
+        <form role="form" method="post" id="add-post-form">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-12 mb-1">
+                    {{ task_form|crispy }}
+                </div>
+            </div>
+            <input class="btn btn-success" id="submit_item" name="commit" type="submit" value="Edit Task">
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

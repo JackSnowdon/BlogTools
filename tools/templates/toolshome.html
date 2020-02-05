@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% block page_title %} | Home {% endblock %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% block page_title %} | Tools {% endblock %} {% block content %}
 
 <div class="row">
     <div class="col-12 text-center">
@@ -10,7 +10,9 @@
 
 <div class="row text-center">
     <div class="col-md-6 col-12">
-        <p class="lead">Daily checklist. Random Point Machine?</p>
+        <p class="lead">Daily Checklist</p>
+        {% if user.profile.staff_access %}
+        <a href="{% url 'checklist' %}" role="button" class="btn btn-success" id="checklist" aria-disabled="false">Checklist</a> {% endif %}
     </div>
     <div class="col-md-6 col-12">
         <p class="lead">Lorem, ipsum dolor.</p>
