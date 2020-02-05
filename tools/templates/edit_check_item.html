@@ -11,6 +11,9 @@
                 </div>
             </div>
             <input class="btn btn-success" id="submit_item" name="commit" type="submit" value="Edit Task">
+            <a href="{% url 'delete_task' this_task.id  %}" role="button" class="btn btn-danger" aria-disabled="false">Delete Task</a> {% if t.completed == False %}
+            <a href="{% url 'complete_task' this_task.id %}" role="button" class="btn btn-warning" aria-disabled="false">Complete</a> {% else %}
+            <a href="{% url 'complete_task' this_task.id %}" role="button" class="btn btn-warning" aria-disabled="false">Uncomplete</a> {% endif %}
         </form>
     </div>
 </div>

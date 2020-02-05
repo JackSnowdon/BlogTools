@@ -19,8 +19,9 @@
         {% endif %}
     </div>
     <div class="col-6">
-        <a href="{% url 'delete_task' t.id  %}" role="button" class="btn btn-danger" aria-disabled="false">Delete Task</a>
-        <a href="{% url 'complete_task' t.id %}" role="button" class="btn btn-warning" aria-disabled="false">Complete</a>
+        <a href="{% url 'delete_task' t.id  %}" role="button" class="btn btn-danger" aria-disabled="false">Delete Task</a> {% if t.completed == False %}
+        <a href="{% url 'complete_task' t.id %}" role="button" class="btn btn-warning" aria-disabled="false">Complete</a> {% else %}
+        <a href="{% url 'complete_task' t.id %}" role="button" class="btn btn-warning" aria-disabled="false">Uncomplete</a> {% endif %}
     </div>{% endfor %}
 </div>
 

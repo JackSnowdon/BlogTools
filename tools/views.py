@@ -29,7 +29,7 @@ def checklist(request):
         )
         return redirect("blog_home")
 
-
+@login_required
 def add_checklist(request):
     if request.user.profile.staff_access:
         if request.method == "POST":
@@ -90,15 +90,20 @@ def delete_task(request, pk):
         return redirect("blog_home")
 
 
-
 @login_required
 def complete_task(request, pk):
     if request.user.profile.staff_access:
         instance = Todo.objects.get(pk=pk)
-        instance.completed = True
-        messages.error(
-                    request, "Completed {0}".format(instance.task), extra_tags="alert"
-                )
+        if instance.completed == True:
+            instance.completed = False
+            messages.error(
+                        request, "Uncompleted {0}".format(instance.task), extra_tags="alert"
+                    )
+        else:
+            instance.completed = True
+            messages.error(
+                        request, "Completed {0}".format(instance.task), extra_tags="alert"
+                    )
         instance.save()
         return redirect(reverse("checklist"))
     else:
