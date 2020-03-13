@@ -4,15 +4,17 @@
 
 <p>{{ user.email }} </p>
 
-<h3 class="mb-3">Posts:</h3>
+
 <div class="row">
 
     <div class="col-6 blog-link">
+        <h3 class="mb-3">Posts:</h3>
         {% for p in posts %}
         <p class="report-links"><a href="{% url 'view_post' p.id %}">{{ p.title }}</a></p>
         {% endfor %}
     </div>
     <div class="col-6 blog-link">
+        <h3 class="mb-3">Tasks:</h3>
         {% for t in tasks %}
         <p class="report-links">{{ t.task }}</p>
         {% endfor %}

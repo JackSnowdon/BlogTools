@@ -13,9 +13,9 @@
 <div class="row">
     {% for t in tasks %}
     <div class="col-6">{% if t.completed == False %}
-        <p><a href="{% url 'edit_checklist' t.id  %}" aria-disabled="false">{{ t.task }}</a></p>
+        <p class="task-list"><a href="{% url 'edit_checklist' t.id  %}" aria-disabled="false">{{ t.task }}</a></p>
         {% else %}
-        <p><s><a href="{% url 'edit_checklist' t.id  %}" aria-disabled="false">{{ t.task }}</a></s></p>
+        <p class="task-list"><s><a href="{% url 'edit_checklist' t.id  %}" aria-disabled="false">{{ t.task }}</a></s></p>
         {% endif %}
     </div>
     <div class="col-6">
