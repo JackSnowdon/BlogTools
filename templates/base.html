@@ -30,10 +30,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'blog_home' %}">Blog</a>
                 </li>
+                {% if request.user.profile.staff_access %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'toolshome' %}">Tools</a>
                 </li>
-                {% if user.is_authenticated %}
+                {% endif %} {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                 </li>

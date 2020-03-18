@@ -73,4 +73,5 @@ def user_profile(request):
     profile = user.profile
     posts = profile.posts.all()
     tasks = profile.tasks.all()
-    return render(request, 'profile.html', {"user": user, "profile": profile, "posts": posts, "tasks": tasks})
+    comments = profile.comments.all()
+    return render(request, 'profile.html', {"user": user, "profile": profile, "posts": posts, "tasks": tasks, "comments": comments})

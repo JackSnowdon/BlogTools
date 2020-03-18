@@ -40,6 +40,22 @@
 }
 
 
+/* Blog */
+
+.blog-link a {
+    color: #2d2b0e;
+    text-decoration: none;
+    transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+}
+
+.blog-link a:hover {
+    color: #718d3f;
+}
+
+
 /* Tools */
 
 .task-list a {
