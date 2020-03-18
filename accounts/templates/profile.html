@@ -14,9 +14,10 @@
     </div>
     <div class="col-6 blog-link">
         <h3 class="mb-3">Tasks:</h3>
-        {% for t in tasks %}
+        {% for t in tasks %} {% if t.completed == False %}
         <p class="report-links">{{ t.task }}</p>
-        {% endfor %}
+        {% else %}
+        <s><p class="report-links">{{ t.task }}</p></s> {% endif %} {% endfor %}
     </div>
 </div>
 {% endif %}

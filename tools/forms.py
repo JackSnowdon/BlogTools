@@ -5,4 +5,4 @@ class TodoForm(forms.ModelForm):
 
     class Meta:
         model = Todo
-        exclude = ["completed"]
+        exclude = ["completed", "done_by"]

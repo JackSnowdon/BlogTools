@@ -21,7 +21,9 @@ def toolshome(request):
 @login_required
 def checklist(request):
     if request.user.profile.staff_access:
-        tasks = Todo.objects.all()
+        user = request.user
+        profile = user.profile
+        tasks = Todo.objects.filter(done_by=profile)
         return render(request, "checklist.html", {"tasks": tasks})
     else:
         messages.error(
@@ -39,6 +41,8 @@ def add_checklist(request):
                 messages.error(
                     request, "Added {0}".format(unit.task), extra_tags="alert"
                 )
+                user = request.user
+                unit.done_by = user.profile
                 unit.save()
                 return redirect("checklist")
         else:
