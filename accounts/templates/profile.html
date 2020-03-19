@@ -4,7 +4,7 @@
 
 <p>{{ user.email }} </p>
 
-{% if request.user.profile.staff_access %}
+{% if user.profile.staff_access %}
 <div class="row">
     <div class="col-6 blog-link">
         <h3 class="mb-3">Posts:</h3>
@@ -20,11 +20,16 @@
         <s><p class="report-links">{{ t.task }}</p></s> {% endif %} {% endfor %}
     </div>
 </div>
+<div class="row">
+    <div class="col-12 text-center mb-3">
+        <a href="{% url 'admin_panel' %}" role="button" class="btn btn-success" id="admin-panel" aria-disabled="false">Admin Panel</a>
+    </div>
+</div>
 {% endif %}
 
 <div class="row">
     <div class="col-12 blog-link">
-        <h3 class="mb-3">Posts:</h3>
+        <h3 class="mb-3">Comments:</h3>
         {% for c in comments %}
         <p class="report-links"><a href="{% url 'view_post' c.id %}"> - {{ c.post }} 
         </br>{{ c.text }} </a></p>

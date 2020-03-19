@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.models import User
+from .models import *
 from accounts.forms import UserLoginForm, UserRegistrationForm
 
 # Create your views here.
@@ -75,3 +76,34 @@ def user_profile(request):
     tasks = profile.tasks.all()
     comments = profile.comments.all()
     return render(request, 'profile.html', {"user": user, "profile": profile, "posts": posts, "tasks": tasks, "comments": comments})
+
+
+def admin_panel(request):
+    if request.user.profile.staff_access:
+        profiles = Profile.objects.order_by('user')
+        return render(request, "admin_panel.html", {"profiles": profiles})
+    else:
+        messages.error(
+            request, "You Don't Have The Required Permissions", extra_tags="alert"
+        )
+        return redirect("blog_home")
+
+
+def change_staff_access(request, pk):
+    if request.user.profile.staff_access:
+        profile = get_object_or_404(Profile, pk=pk)
+        access = profile.staff_access
+        if access == True:
+            access = False
+        else:
+            access = True
+        messages.error(
+                    request, "Set {0}'s Staff Access To {1}".format(profile, access), extra_tags="alert"
+                )
+        profile.save()
+        return redirect("admin_panel")
+    else:
+        messages.error(
+            request, "You Don't Have The Required Permissions", extra_tags="alert"
+        )
+        return redirect("blog_home")

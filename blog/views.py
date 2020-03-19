@@ -7,7 +7,7 @@ from .forms import *
 
 
 def blog_home(request):
-    posts = Post.objects.all().order_by('-created_on')
+    posts = Post.objects.order_by('-created_on')
     return render(request, "blog_index.html", {"posts": posts})
 
 @login_required
