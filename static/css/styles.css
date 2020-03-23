@@ -49,6 +49,18 @@ tr {
     -o-transition: all 0.35s ease-in-out;
 }
 
+.fa-dumpster-fire {
+    color: #ac3430;
+    transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+}
+
+.fa-dumpster-fire:hover {
+    color: red;
+}
+
 
 /* Blog */
 

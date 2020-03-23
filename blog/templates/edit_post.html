@@ -16,7 +16,7 @@
                 </div>
             </div>
             <input class="btn btn-success" id="submit_post" name="commit" type="submit" value="Edit Post">
-            <a href="{% url 'delete_post' this_post.id  %}" role="button" class="btn btn-danger" aria-disabled="false">Delete Post</a>
+            <a href="{% url 'delete_post' this_post.id  %}" role="button" class="btn btn-danger" aria-disabled="false" onclick="return confirm('Are you sure you to delete {{ this_post }}?');">Delete Post</a>
             <a href="{% url 'blog_home'  %}" role="button" class="btn btn-warning" aria-disabled="false">Back To All Blogs</a>
         </form>
     </div>

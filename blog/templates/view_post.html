@@ -29,7 +29,7 @@
             {% if user.profile.staff_access %}
             <form class="" method="post" action="{% url 'delete_comment' c.id %}">
                 {% csrf_token %}
-                <button class="btn delete-btn" type="submit"><i class="fas fa-dumpster-fire"></i></button>
+                <button class="btn delete-btn" type="submit"><i class="fas fa-dumpster-fire" onclick="return confirm('Are you sure you to delete this comment?');" ></i></button>
             </form>
             {% endif %}
         </div>
