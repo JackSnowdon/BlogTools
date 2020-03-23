@@ -102,3 +102,16 @@ def add_comment(request, pk):
         comment_form = CommentForm()
         return render(request, "add_comment.html", {"comment_form": comment_form, "post": post })
 
+
+@login_required
+def delete_comment(request, pk):
+    if request.user.profile.staff_access:
+        instance = Comment.objects.get(pk=pk)
+        messages.error(request, "Deleted Comment", extra_tags="alert")
+        instance.delete()
+        return redirect(reverse("blog_home"))
+    else:
+        messages.error(
+            request, "You Don't Have The Required Permissions", extra_tags="alert"
+        )
+        return redirect("blog_home")

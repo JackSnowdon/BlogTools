@@ -26,6 +26,12 @@
         <div class="col-12 mb-3">
             <p> - {{ c.text }}</p>
             <p class="small">Posted by: {{ c.author }}</p>
+            {% if user.profile.staff_access %}
+            <form class="" method="post" action="{% url 'delete_comment' c.id %}">
+                {% csrf_token %}
+                <button class="btn delete-btn" type="submit"><i class="fas fa-dumpster-fire"></i></button>
+            </form>
+            {% endif %}
         </div>
         {% endfor %}
     </div>
