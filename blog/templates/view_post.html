@@ -1,17 +1,21 @@
 {% extends 'base.html' %} {% load static %} {% block page_title %} View {{ this_post.title|truncatewords:3 }} {% endblock %} {% block content %}
 
+<div class="row">
+    <div class="col-12">
+        <a href="{% url 'blog_home'  %}" role="button" class="btn btn-warning mb-3" aria-disabled="false">Back To All Posts</a>
+    </div>
+</div>
+
 <section class="post">
-    <div class="row jumbotron">
-        <div class="col-12">
-            <h2>{{ this_post.title }}</h2>
+    <div class="row">
+        <div class="col-12 text-center">
+            <h2>{{ this_post.title }} <span class="post-done-by"> - Posted By: {{ this_post.done_by }}</span> </h2>
             <p>Posted On: {{ this_post.created_on }} </p>
-            <p class="small">Views: {{ this_post.views }}</p>
-            <p>Content: {{ this_post.content_level }}</p>
         </div>
 
-        <div class="col-12">
+        <div class="col-12 jumbotron jumbo-blog">
             <p>{{ this_post.body|linebreaks }}</p>
-            <p class="small">Posted by: {{ this_post.done_by }} Last Modified: {{ this_post.last_modified }}</p>
+            <p class="small">Post Views: {{ this_post.views }}</br>Last Modified: {{ this_post.last_modified }}</p>
         </div>
     </div>
 </section>
@@ -42,10 +46,9 @@
 <section class="tools">
     <div class="row">
         <div class="col-12 text-center">
-            {% if user.profile == this_post.done_by %}
-            <a href="{% url 'edit_post' this_post.id  %}" role="button" class="btn btn-warning mb-3" aria-disabled="false">Edit Post</a> <br> {% endif %} {% if user.is_authenticated %}
-            <a href="{% url 'add_comment' this_post.id  %}" role="button" class="btn btn-warning mb-3" aria-disabled="false">Leave Comment</a> <br> {% endif %}
-            <a href="{% url 'blog_home'  %}" role="button" class="btn btn-warning" aria-disabled="false">Back To All Blogs</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'add_comment' this_post.id  %}" role="button" class="btn btn-warning mb-3" aria-disabled="false">Leave Comment</a> <br> {% endif %} {% if user.profile == this_post.done_by %}
+            <a href="{% url 'edit_post' this_post.id  %}" role="button" class="btn btn-warning mb-3" aria-disabled="false">Edit Post</a> <br> {% endif %}
         </div>
     </div>
 </section>
