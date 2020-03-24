@@ -20,7 +20,12 @@
         </a>
     </div>
 </div>
-<p class="lead">{{ p.body|truncatewords:25 }}</p>
+<div class="row">
+    <div class="col-12">
+        <p class="lead">{{ p.body|truncatewords:25 }}</p>
+        <p class="small">Comments: {{ p.post_comments.count }}</p>
+    </div>
+</div>
 {% if user.profile.staff_access %}
 <div class="row">
     <div class="col-12"><a href="{% url 'edit_post' p.id  %}" role="button" class="btn btn-warning" aria-disabled="false">Edit Post</a></div>

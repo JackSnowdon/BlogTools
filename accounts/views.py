@@ -92,13 +92,12 @@ def admin_panel(request):
 def change_staff_access(request, pk):
     if request.user.profile.staff_access:
         profile = get_object_or_404(Profile, pk=pk)
-        access = profile.staff_access
-        if access == True:
-            access = False
+        if profile.staff_access == True:
+            profile.staff_access = False
         else:
-            access = True
+            profile.staff_access = True
         messages.error(
-                    request, "Set {0}'s Staff Access To {1}".format(profile, access), extra_tags="alert"
+                    request, "Set {0}'s Staff Access To {1}".format(profile, profile.staff_access), extra_tags="alert"
                 )
         profile.save()
         return redirect("admin_panel")
