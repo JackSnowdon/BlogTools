@@ -30,6 +30,7 @@ def checklist(request):
             request, "You Don't Have The Required Permissions", extra_tags="alert"
         )
         return redirect("blog_home")
+        
 
 @login_required
 def add_checklist(request):
@@ -54,6 +55,7 @@ def add_checklist(request):
         )
         return redirect("blog_home")
 
+
 @login_required
 def edit_checklist(request, pk):
     if request.user.profile.staff_access:
@@ -75,7 +77,6 @@ def edit_checklist(request, pk):
             request, "You Don't Have The Required Permissions", extra_tags="alert"
         )
         return redirect("blog_home")
-
 
 
 @login_required
