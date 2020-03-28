@@ -26,7 +26,7 @@
             <tbody>
                 {% for i in extras %}
                 <tr>
-                    <td class="account-row-link">{{ i.item }}</td>
+                    <td class="account-row-link"><a href="{% url 'view_extra_item' i.pk %}" class="">{{ i.item }}</a></td>
                     <td class="account-expense">£{{ i.amount }}</td>
                 </tr>
                 {% endfor %}

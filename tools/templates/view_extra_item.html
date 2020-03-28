@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% load static %} {% block page_title %} | View Extra Item {% endblock %} {% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <a href="{% url 'account'  %}" role="button" class="btn btn-warning mb-3" aria-disabled="false">Back To Accounts</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <h2 class="text-center mb-2">{{ item.item }}</h2>
+        <table class="account-table table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Item:</th>
+                    <th scope="col">Amount:</th>
+                    <th scope="col">Tools::</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ item.item }}</td>
+                    <td class="account-expense">{{ item.amount }}</td>
+                    <td class="account-tools"><a href="{% url 'edit_extra_item' item.pk %}" class=""><i class="far fa-edit"></i></a> <a href="{% url 'delete_extra_item' item.pk %}" onclick="return confirm('Are you sure you to delete {{ item }}?');"><i class="far fa-trash-alt"></i></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

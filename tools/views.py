@@ -247,3 +247,54 @@ def add_extra_item(request):
             request, "You Don't Have The Required Permissions", extra_tags="alert"
         )
         return redirect("blog_home")
+
+
+@login_required
+def view_extra_item(request, pk):
+    if request.user.profile.staff_access:
+        item = get_object_or_404(ExtraItem, pk=pk)
+        return render(request, "view_extra_item.html", {"item": item})
+    else:
+        messages.error(
+            request, "You Don't Have The Required Permissions", extra_tags="alert"
+        )
+        return redirect("blog_home")
+
+
+@login_required
+def edit_extra_item(request, pk):
+    if request.user.profile.staff_access:
+        this_item = get_object_or_404(ExtraItem, pk=pk)
+        if request.method == "POST":
+            item_form = ExtraItemForm(request.POST, instance=this_item)
+            if item_form.is_valid():
+                item = item_form.save(commit=False)
+                messages.error(
+                    request, "Edit Extra {0}".format(item.item), extra_tags="alert"
+                )
+                item.save()
+                return redirect("account")
+        else:
+            item_form = ExtraItemForm(instance=this_item)
+        return render(request, "edit_extra_item.html", {"item_form": item_form})
+    else:
+        messages.error(
+            request, "You Don't Have The Required Permissions", extra_tags="alert"
+        )
+        return redirect("blog_home")
+
+
+@login_required
+def delete_extra_item(request, pk):
+    if request.user.profile.staff_access:
+        this_item = get_object_or_404(ExtraItem, pk=pk)
+        messages.error(
+                    request, "Deleted {0}".format(this_item.item), extra_tags="alert"
+                )
+        this_item.delete()
+        return redirect(reverse("account"))
+    else:
+        messages.error(
+            request, "You Don't Have The Required Permissions", extra_tags="alert"
+        )
+        return redirect("blog_home")
