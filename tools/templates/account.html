@@ -3,10 +3,36 @@
 <div class="row">
     <div class="col-12 text-center">
         <div class="jumbotron">
-            <h1>Accounts</h1>
+            <h1>Monthly Account:</h1>
             <hr>
-            <a href="{% url 'add_account_item' %}" role="button" class="btn btn-success" id="add_account_item" aria-disabled="false">Add Item</a>
+            <h5>Balance: £{{ balance }}</h5>
+            <a href="{% url 'add_account_item' %}" role="button" class="btn btn-success mb-2" id="add_account_item" aria-disabled="false">Add Item</a>
+            <h5>Remaining: £{{ remaining }}</h5>
         </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-8">
+        <a href="{% url 'add_extra_item' %}" role="button" class="btn btn-success mb-2" id="add_extra_item" aria-disabled="false">Add Extra Item</a>
+        <h3>Extra Items:</h3>
+        <table class="account-table table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Item:</th>
+                    <th scope="col">Amount:</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in extras %}
+                <tr>
+                    <td class="account-row-link">{{ i.item }}</td>
+                    <td class="account-expense">£{{ i.amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h5 class="mb-3">Total: £{{ extra_total }}</h5>
     </div>
 </div>
 
@@ -24,11 +50,12 @@
                 {% for i in items %} {% if i.expense == False %}
                 <tr>
                     <td class="account-row-link"><a href="{% url 'view_account_item' i.pk %}" class="">{{ i.item }}</a></td>
-                    <td class="account-income">{{ i.amount }}</td>
+                    <td class="account-income">£{{ i.amount }}</td>
                 </tr>
                 {% endif %} {% endfor %}
             </tbody>
         </table>
+        <h5 class="text-center">Total: £{{ income_total }}</h5>
     </div>
     <div class="col-12 col-md-6">
         <h3>Expenses:</h3>
@@ -43,11 +70,12 @@
                 {% for i in items %} {% if i.expense == True %}
                 <tr>
                     <td class="account-row-link"><a href="{% url 'view_account_item' i.pk %}" class="">{{ i.item }}</a></td>
-                    <td class="account-expense">{{ i.amount }}</td>
+                    <td class="account-expense">£{{ i.amount }}</td>
                 </tr>
                 {% endif %} {% endfor %}
             </tbody>
         </table>
+        <h5 class="text-center">Total: £{{ expense_total }}</h5>
     </div>
 </div>
 

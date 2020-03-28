@@ -124,8 +124,23 @@ def account(request):
     if request.user.profile.staff_access:
         user = request.user
         profile = user.profile
-        items = AccountItem.objects.filter(done_by=profile)
-        return render(request, "account.html", {"items": items})
+        items = AccountItem.objects.filter(done_by=profile).order_by('-amount')
+        income_total = 0
+        expense_total = 0
+        for i in items:
+            if i.expense == True:
+                expense_total += i.amount
+            else:
+                income_total += i.amount
+        balance = (income_total - expense_total)
+        extras = ExtraItem.objects.filter(done_by=profile).order_by('-amount')
+        extra_total = 0
+        for e in extras:
+            extra_total += e.amount
+        remaining = (balance - extra_total)
+        return render(request, "account.html", {"items": items, "income_total": income_total, 
+        "expense_total": expense_total, "balance": balance, "extras": extras, "extra_total": extra_total,
+        "remaining": remaining})
     else:
         messages.error(
             request, "You Don't Have The Required Permissions", extra_tags="alert"
@@ -202,6 +217,31 @@ def delete_account_item(request, pk):
                 )
         this_item.delete()
         return redirect(reverse("account"))
+    else:
+        messages.error(
+            request, "You Don't Have The Required Permissions", extra_tags="alert"
+        )
+        return redirect("blog_home")
+
+
+@login_required
+def add_extra_item(request):
+    if request.user.profile.staff_access:
+        if request.method == "POST":
+            item_form = ExtraItemForm(request.POST)
+            if item_form.is_valid():
+                item = item_form.save(commit=False)
+                messages.error(
+                    request, "Added Extra {0}".format(item.item), extra_tags="alert"
+                )
+                user = request.user
+                item.done_by = user.profile
+                item.created_on = datetime.now()
+                item.save()
+                return redirect("account")
+        else:
+            item_form = ExtraItemForm()
+        return render(request, "add_extra_item.html", {"item_form": item_form})
     else:
         messages.error(
             request, "You Don't Have The Required Permissions", extra_tags="alert"

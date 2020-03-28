@@ -13,4 +13,5 @@ urlpatterns = [
     path(r'view_account_item/<int:pk>', view_account_item, name="view_account_item"),
     path(r'edit_account_item/<int:pk>', edit_account_item, name="edit_account_item"),
     path(r'delete_account_item/<int:pk>', delete_account_item, name="delete_account_item"),
+    path('add_extra_item/', add_extra_item, name="add_extra_item"),
 ]

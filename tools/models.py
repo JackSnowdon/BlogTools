@@ -21,3 +21,13 @@ class AccountItem(models.Model):
 
     def __str__(self):
         return self.item
+
+
+class ExtraItem(models.Model):
+    item = models.CharField(max_length=255)
+    done_by = models.ForeignKey(Profile, related_name='extra_items', on_delete=models.PROTECT)
+    created_on = models.DateTimeField(auto_now_add=True)
+    amount = models.IntegerField()
+
+    def __str__(self):
+        return self.item

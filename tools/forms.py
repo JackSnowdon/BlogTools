@@ -13,3 +13,10 @@ class AccountForm(forms.ModelForm):
     class Meta:
         model = AccountItem
         exclude = ["created_on", "done_by"]
+
+
+class ExtraItemForm(forms.ModelForm):
+
+     class Meta:
+        model = ExtraItem
+        exclude = ["created_on", "done_by"]

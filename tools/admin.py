@@ -5,3 +5,4 @@ from .models import *
 
 admin.site.register(Todo)
 admin.site.register(AccountItem)
+admin.site.register(ExtraItem)
