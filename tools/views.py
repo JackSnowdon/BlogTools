@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 from .models import *
 from .forms import *
 
@@ -111,6 +112,45 @@ def complete_task(request, pk):
                     )
         instance.save()
         return redirect(reverse("checklist"))
+    else:
+        messages.error(
+            request, "You Don't Have The Required Permissions", extra_tags="alert"
+        )
+        return redirect("blog_home")
+
+
+@login_required
+def account(request):
+    if request.user.profile.staff_access:
+        user = request.user
+        profile = user.profile
+        items = AccountItem.objects.filter(done_by=profile)
+        return render(request, "account.html", {"items": items})
+    else:
+        messages.error(
+            request, "You Don't Have The Required Permissions", extra_tags="alert"
+        )
+        return redirect("blog_home")
+        
+
+@login_required
+def add_account_item(request):
+    if request.user.profile.staff_access:
+        if request.method == "POST":
+            item_form = AccountForm(request.POST)
+            if item_form.is_valid():
+                item = item_form.save(commit=False)
+                messages.error(
+                    request, "Added {0}".format(item.item), extra_tags="alert"
+                )
+                user = request.user
+                item.done_by = user.profile
+                item.created_on = datetime.now()
+                item.save()
+                return redirect("account")
+        else:
+            item_form = AccountForm()
+        return render(request, "add_account_item.html", {"item_form": item_form})
     else:
         messages.error(
             request, "You Don't Have The Required Permissions", extra_tags="alert"

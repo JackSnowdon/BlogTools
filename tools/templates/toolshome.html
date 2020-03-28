@@ -4,22 +4,22 @@
     <div class="col-12 text-center">
         <div class="jumbotron">
             <h1>Tools that will help my day to day life</h1>
+            <hr>
         </div>
     </div>
 </div>
 
+{% if user.profile.staff_access %}
+
 <div class="row text-center">
     <div class="col-md-6 col-12">
         <p class="lead">Daily Checklist</p>
-        {% if user.profile.staff_access %}
-        <a href="{% url 'checklist' %}" role="button" class="btn btn-success" id="checklist" aria-disabled="false">Checklist</a> {% endif %}
+        <a href="{% url 'checklist' %}" role="button" class="btn btn-success" id="checklist" aria-disabled="false">Checklist</a>
     </div>
     <div class="col-md-6 col-12">
-        <p class="lead">Lorem, ipsum dolor.</p>
+        <p class="lead">Accounts:</p>
+        <a href="{% url 'account' %}" role="button" class="btn btn-success" id="accounts" aria-disabled="false">Accounts</a>
     </div>
 </div>
 
-
-
-
-{% endblock %}
+{% endif %} {% endblock %}

@@ -107,6 +107,18 @@ tr {
     color: #74a812;
 }
 
+.account-table {
+    background-color: #f4f4f4;
+}
+
+.account-income {
+    color: #718d3f;
+}
+
+.account-expense {
+    color: #ac3430;
+}
+
 
 /* Helpers */
 
