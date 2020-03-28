@@ -119,6 +119,31 @@ tr {
     color: #ac3430;
 }
 
+.account-row-link a {
+    color: black;
+    text-decoration: none;
+    transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+}
+
+.account-row-link a:hover {
+    color: #750d0d;
+}
+
+.account-tools a {
+    color: black;
+    transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+}
+
+.account-tools a:hover {
+    color: #750d0d;
+}
+
 
 /* Helpers */
 

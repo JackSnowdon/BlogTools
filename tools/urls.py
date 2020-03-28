@@ -10,4 +10,7 @@ urlpatterns = [
     path(r'complete_task/<int:pk>', complete_task, name="complete_task"),
     path('account/', account, name="account"),
     path('add_account_item/', add_account_item, name="add_account_item"),
+    path(r'view_account_item/<int:pk>', view_account_item, name="view_account_item"),
+    path(r'edit_account_item/<int:pk>', edit_account_item, name="edit_account_item"),
+    path(r'delete_account_item/<int:pk>', delete_account_item, name="delete_account_item"),
 ]

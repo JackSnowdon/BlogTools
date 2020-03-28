@@ -23,7 +23,7 @@
             <tbody>
                 {% for i in items %} {% if i.expense == False %}
                 <tr>
-                    <td>{{ i.item }}</td>
+                    <td class="account-row-link"><a href="{% url 'view_account_item' i.pk %}" class="">{{ i.item }}</a></td>
                     <td class="account-income">{{ i.amount }}</td>
                 </tr>
                 {% endif %} {% endfor %}
@@ -42,7 +42,7 @@
             <tbody>
                 {% for i in items %} {% if i.expense == True %}
                 <tr>
-                    <td>{{ i.item }}</td>
+                    <td class="account-row-link"><a href="{% url 'view_account_item' i.pk %}" class="">{{ i.item }}</a></td>
                     <td class="account-expense">{{ i.amount }}</td>
                 </tr>
                 {% endif %} {% endfor %}
