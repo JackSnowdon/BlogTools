@@ -4,7 +4,19 @@
     <div class="col-12 text-center">
         <div class="jumbotron">
             <h1>Tools and a Blog!</h1>
-            <hr>
+            <hr> {% if user.profile.staff_access %}
+            <div class="row">
+                <div class="col-4">
+                    <a href="{% url 'blog_home' %}" role="button" class="btn btn-success" id="add-post" aria-disabled="false">Blog</a>
+                </div>
+                <div class="col-4">
+                    <a href="{% url 'account' %}" role="button" class="btn btn-success" id="add-post" aria-disabled="false">Accounts</a>
+                </div>
+                <div class="col-4">
+                    <a href="{% url 'checklist' %}" role="button" class="btn btn-success" id="add-post" aria-disabled="false">Checklist</a>
+                </div>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>

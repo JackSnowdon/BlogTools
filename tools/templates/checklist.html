@@ -1,6 +1,12 @@
 {% extends 'base.html' %} {% load static %} {% block page_title %} | Checklist {% endblock %} {% block content %}
 
 <div class="row">
+    <div class="col-12">
+        <a href="{% url 'toolshome' %}" role="button" class="btn btn-success mb-2" id="tools_home" aria-disabled="false">Back To Tools</a>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-12 text-center">
         <div class="jumbotron">
             <h1>Checklist</h1>
