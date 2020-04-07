@@ -2,11 +2,9 @@
 
 <div class="row">
     <div class="col-12 text-center">
-        <div class="jumbotron">
-            <h1>Blog Posts!</h1>
-            <hr> {% if user.profile.staff_access %}
-            <a href="{% url 'add_post' %}" role="button" class="btn btn-success" id="add-post" aria-disabled="false">Add Post</a> {% endif %}
-        </div>
+        <h1>Blog Posts!</h1>
+        <hr class="break-index"> {% if user.profile.staff_access %}
+        <a href="{% url 'add_post' %}" role="button" class="btn btn-success" id="add-post" aria-disabled="false">Add Post</a> {% endif %}
     </div>
 </div>
 
@@ -20,7 +18,7 @@
         </a>
     </div>
 </div>
-<div class="row">
+<div class="row mb-5">
     <div class="col-12">
         <p class="lead">{{ p.body|truncatewords:25 }}</p>
         <p class="small">Comments: {{ p.post_comments.count }}</p>

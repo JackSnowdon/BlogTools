@@ -96,6 +96,7 @@ tr {
     font-size: 19px;
     background-color: #ffffff;
     color: black;
+    padding: 1.5rem;
 }
 
 
@@ -166,4 +167,8 @@ tr {
     -moz-transition: all 0.35s ease-in-out;
     -webkit-transition: all 0.35s ease-in-out;
     -o-transition: all 0.35s ease-in-out;
+}
+
+.link-helper {
+    color: #ac3430;
 }
