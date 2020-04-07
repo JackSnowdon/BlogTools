@@ -1,37 +1,70 @@
 {% extends 'base.html' %} {% load static %} {% block page_title %} | Home {% endblock %} {% block content %}
 
-<div class="row">
-    <div class="col-12 text-center">
-        <div class="jumbotron">
-            <h1>Tools and a Blog!</h1>
-            <hr> {% if user.profile.staff_access %}
+<section class="header">
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h1>Jack's Homemade Blog!</h1>
+            <a href="{% url 'blog_home' %}" role="button" class="btn btn-success" id="add-post" aria-disabled="false">All Blog Posts!</a>
+            <hr class="break-index"> {% if user.profile.staff_access %}
             <div class="row">
-                <div class="col-4">
-                    <a href="{% url 'blog_home' %}" role="button" class="btn btn-success" id="add-post" aria-disabled="false">Blog</a>
-                </div>
-                <div class="col-4">
+                <div class="col-6">
                     <a href="{% url 'account' %}" role="button" class="btn btn-success" id="add-post" aria-disabled="false">Accounts</a>
                 </div>
-                <div class="col-4">
+                <div class="col-6">
                     <a href="{% url 'checklist' %}" role="button" class="btn btn-success" id="add-post" aria-disabled="false">Checklist</a>
                 </div>
             </div>
             {% endif %}
         </div>
     </div>
-</div>
+</section>
 
-<div class="row text-center">
-    <div class="col-md-6 col-12">
-        <p class="lead">Hi! </br>
-            </br>Using Django i've created a blog which will serve both as a my blog, and as a space to play with and create new social tools.</br>
-            </br> Under the hood I have started to build and implement a tiered access system to allow different permissions for different users.
-        </p>
+<section class="about">
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="mb-3 blog-link">Hi, Welcome To <a href="{% url 'blog_home' %}">My Blog!</a></h3>
+            <p class="lead index-lead text-center">My name is Jack Snowdon, I am a budding Full Stack Web Developer based in Wolverhampton, UK. I have launched this blog platform, in which i'll be updating with my latest projects, what's been influencing me and a hot take or two!
+                </br>This is a work in progress, as well as updating the blog, i'll be adding new features and UX changes, which i'll also blog about on this platform. As a guest user you can view any blog post, upon registration you're given the power
+                to comment upon a blog post.
+            </p>
+            <hr class="break-index">
+        </div>
     </div>
-    <div class="col-md-6 col-12">
-        <p class="lead">Created By Jack Snowdon</p>
-        <p class="blog-link"><a href="http://www.jacksnowdon.co.uk">Website</a></p>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="mb-3 text-center">About Me!</h3>
+            <p class="lead index-lead text-center">I'm 26 year old musician turned coder, reciving a First Class Honours from Code Institute for my studies in Full Stack Web Development after years of working in bars, cinemas and phone sales. When i'm not behind the drums or laptop I enjoy
+                gaming of all forms, be it PC Gaming, classic consoles or tabletop games.</br>
+                I also recently lost 7 Stone (or 100lbs!) through lifestyle changes, which is more of a humble brag at this point! However, i've found myself capable of helping others with their weight or mental health, which is something i've taken great pride in being
+                able to help!
+            </p>
+            <hr class="break-index">
+        </div>
     </div>
-</div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <h3 class="mb-3 text-right">How It's Made!</h3>
+            <p class="lead index-lead text-center blog-link">This blog is powered <a href="https://www.djangoproject.com/">The Wonderful Django Python Framework</a>, which has been an incredible tool during my development as a developer! </br>
+                Under the blog platform is a tiered access system, which allows users with the correct permissions access to not only posting/edting blog posts but access to a personal to-do system and a few other tools i'm currently working on. My idea is to launch
+                tools slowly into this site as my confidence and network grows.
+
+            </p>
+            <hr class="break-index">
+        </div>
+    </div>
+</section>
+
+
+
+<section class="footer">
+    <div class="row">
+        <div class="col-12 text-center">
+            <p class="lead">Created By Jack Snowdon</p>
+            <h5 class="blog-link"><a href="http://www.jacksnowdon.co.uk">My Resume Website</a></h5>
+        </div>
+    </div>
+</section>
 
 {% endblock %}

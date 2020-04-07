@@ -3,7 +3,7 @@
 /* Background */
 
 .bg {
-    background-color: #e0e0e0;
+    background-color: #ffffff;
     font-family: 'Zilla Slab', serif;
 }
 
@@ -11,7 +11,7 @@
 /* Navbar */
 
 .nav-bg {
-    background-color: #2d2b0e;
+    background-color: #080807;
 }
 
 .nav-bg a {
@@ -37,6 +37,13 @@
 .logged-in {
     color: #f4f4f4;
     margin: 8px 2px;
+}
+
+
+/* Index */
+
+.index-lead {
+    padding: 1.2rem;
 }
 
 
@@ -142,6 +149,13 @@ tr {
 
 .account-tools a:hover {
     color: #750d0d;
+}
+
+
+/* Breaks */
+
+.break-index {
+    width: 250px;
 }
 
 
