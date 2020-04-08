@@ -46,6 +46,10 @@
     padding: 1.2rem;
 }
 
+.weighted-lead {
+    font-weight: 600;
+}
+
 
 /* Accounts */
 
@@ -93,7 +97,7 @@ tr {
 }
 
 .jumbo-blog {
-    font-size: 19px;
+    font-size: 18px;
     background-color: #ffffff;
     color: black;
     padding: 1.5rem;

@@ -3,7 +3,7 @@
 <section class="header">
     <div class="row mb-5">
         <div class="col-12 text-center">
-            <h1>Jack's Homemade Blog!</h1>
+            <h1 class="weighted-lead">Jack's Homemade Blog!</h1>
             <a href="{% url 'blog_home' %}" role="button" class="btn btn-success" id="add-post" aria-disabled="false">All Blog Posts!</a>
             <hr class="break-index"> {% if user.profile.staff_access %}
             <div class="row">
@@ -22,7 +22,7 @@
 <section class="about">
     <div class="row mb-5">
         <div class="col-12">
-            <h3 class="mb-3 blog-link">Hi, Welcome To <a href="{% url 'blog_home' %}">My Blog!</a></h3>
+            <h3 class="mb-3 blog-link weighted-lead">Hi, Welcome To <a href="{% url 'blog_home' %}">My Blog!</a></h3>
             <p class="lead index-lead text-center">My name is Jack Snowdon, I am a budding Full Stack Web Developer based in Wolverhampton, UK. I have launched this blog platform, in which i'll be updating with my latest projects, what's been influencing me and a hot take or two!
                 </br>This is a work in progress, as well as updating the blog, i'll be adding new features and UX changes, which i'll also blog about on this platform. As a guest user you can view any blog post, upon registration you're given the power
                 to comment upon a blog post.
@@ -33,7 +33,7 @@
 
     <div class="row mb-5">
         <div class="col-12">
-            <h3 class="mb-3 text-center">About Me!</h3>
+            <h3 class="mb-3 text-center weighted-lead">About Me!</h3>
             <p class="lead index-lead text-center">I'm 26 year old musician turned coder, reciving a First Class Honours from Code Institute for my studies in Full Stack Web Development after years of working in bars, cinemas and phone sales. When i'm not behind the drums or laptop I enjoy
                 gaming of all forms, be it PC Gaming, classic consoles or tabletop games.</br>
                 I also recently lost 7 Stone (or 100lbs!) through lifestyle changes, which is more of a humble brag at this point! However, i've found myself capable of helping others with their weight or mental health, which is something i've taken great pride in being
@@ -45,7 +45,7 @@
 
     <div class="row mb-5">
         <div class="col-12">
-            <h3 class="mb-3 text-right">How It's Made!</h3>
+            <h3 class="mb-3 text-right weighted-lead">How It's Made!</h3>
             <p class="lead index-lead text-center blog-link">This blog is powered <a href="https://www.djangoproject.com/">The Wonderful Django Python Framework</a>, which has been an incredible tool during my development as a developer! </br>
                 Under the blog platform is a tiered access system, which allows users with the correct permissions access to not only posting/edting blog posts but access to a personal to-do system and a few other tools i'm currently working on. My idea is to launch
                 tools slowly into this site as my confidence and network grows.
