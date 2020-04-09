@@ -13,8 +13,8 @@
     <div class="col-12 blog-link">
         <a href="{% url 'view_post' p.id %}">
             <h2 class="weighted-lead">{{ p.title }}</h2>
-            <p class="mb-0"> - Last Updated On: {{ p.last_modified }}</p>
-            <p> - Posted By: {{ p.done_by }}</p>
+            <p class="mb-0"> - Posted By: {{ p.done_by }}</p>
+            <p> - Last Updated On: {{ p.last_modified }}</p>
         </a>
     </div>
 </div>

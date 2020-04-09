@@ -5,7 +5,7 @@
         <div class="col-12 text-center">
             <h1 class="weighted-lead">Jack's Homemade Blog!</h1>
             <a href="{% url 'blog_home' %}" role="button" class="btn btn-success" id="add-post" aria-disabled="false">All Blog Posts!</a>
-            <hr class="break-index"> {% if user.profile.staff_access %}
+            <hr class="break-lead"> {% if user.profile.staff_access %}
             <div class="row">
                 <div class="col-6">
                     <a href="{% url 'account' %}" role="button" class="btn btn-success" id="add-post" aria-disabled="false">Accounts</a>
@@ -20,7 +20,7 @@
 </section>
 
 <section class="about">
-    <div class="row mb-5">
+    <div class="row  mb-2">
         <div class="col-12">
             <h3 class="mb-3 blog-link weighted-lead">Hi, Welcome To <a href="{% url 'blog_home' %}">My Blog!</a></h3>
             <p class="lead index-lead text-center">My name is Jack Snowdon, I am a budding Full Stack Web Developer based in Wolverhampton, UK. I have launched this blog platform, in which i'll be updating with my latest projects, what's been influencing me and a hot take or two!
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div class="row mb-5">
+    <div class="row mb-2">
         <div class="col-12">
             <h3 class="mb-3 text-center weighted-lead">About Me!</h3>
             <p class="lead index-lead text-center">I'm 26 year old musician turned coder, reciving a First Class Honours from Code Institute for my studies in Full Stack Web Development after years of working in bars, cinemas and phone sales. When i'm not behind the drums or laptop I enjoy
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div class="row mb-5">
+    <div class="row mb-4">
         <div class="col-12">
             <h3 class="mb-3 text-right weighted-lead">How It's Made!</h3>
             <p class="lead index-lead text-center blog-link">This blog is powered <a href="https://www.djangoproject.com/">The Wonderful Django Python Framework</a>, which has been an incredible tool during my development as a developer! </br>
@@ -56,15 +56,5 @@
     </div>
 </section>
 
-
-
-<section class="footer">
-    <div class="row">
-        <div class="col-12 text-center">
-            <p class="lead">Created By Jack Snowdon</p>
-            <h5 class="blog-link"><a href="http://www.jacksnowdon.co.uk">My Resume Website</a></h5>
-        </div>
-    </div>
-</section>
 
 {% endblock %}
